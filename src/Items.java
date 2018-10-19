@@ -4,7 +4,7 @@ public class Items {
 	private int xLocation;
 	private int yLocation;
 	private String imagePath;
-	private int itemNo;
+	private int itemNod;
 	
 	
 	
