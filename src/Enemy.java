@@ -3,6 +3,7 @@ public class Enemy {
 	String enemyname;
 	int xcord;
 	int ycord;
+	int speed;
 	String imgpath;
 public Enemy(int xcord, int ycord, String imgpath, String enemyname) {
 	this.xcord = xcord;

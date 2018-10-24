@@ -4,9 +4,10 @@ public class Player {
 	int xcord;
 	int ycord;
 	String imgpath;
-public Player(int xcord, int ycord, String imgpath, String playername) {
-	this.xcord = xcord;
-	this.ycord = ycord;
+	private final int STARTINGX = 250, STARTINGY= 250;
+public Player( String imgpath, String playername) {
+	this.xcord = STARTINGX;
+	this.ycord = STARTINGY;
 	this.imgpath = imgpath;
 	this.playername = playername;
 }
@@ -15,6 +16,7 @@ public String getyourimage() {
 	return imgpath;
 }
 
+//Coordinates that get updated
 public int getxcord() {
 	return xcord;
 }
