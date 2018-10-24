@@ -36,7 +36,7 @@ public class Movement {
 			
 		}
 		else if (userKey.equalsIgnoreCase("d")) {
-			moveright(10);
+			moveright(15);
 		}
 	}
 	
