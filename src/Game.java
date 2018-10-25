@@ -10,11 +10,13 @@ private int score;
 private int highScore;
 private Player player;
 private Items item;
+private Items item2;
 
 
 public Game() {
-		player = new Player( "Steve");
+		player = new Player("Steve");
 		item = new Items();
+		item2 = new Items();
 		
 		
 
