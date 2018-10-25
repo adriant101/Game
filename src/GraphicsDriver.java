@@ -18,6 +18,7 @@ public class GraphicsDriver extends Application {
 	ImageView characterimage; 
 	Scene Mainscene;
 	Group Maingroup;
+	ImageView itemImage;
 	public static void main(String[] args) {
 		launch(args);
 
@@ -35,9 +36,14 @@ public class GraphicsDriver extends Application {
 			@Override
 			public void handle(ActionEvent arg0) {
 				characterimage = new ImageView (game1.getplayerimage());
+				itemImage = new ImageView (game1.getitemimage());
+				itemImage.setX(game1.getitemxcords());
+				itemImage.setY(game1.getitemycords());
+				itemImage.setFitHeight(25);itemImage.setFitWidth(20);
 				characterimage.setX(game1.getxcords());
 				characterimage.setY(game1.getycords());
 				Maingroup.getChildren().add(characterimage);
+				Maingroup.getChildren().add(itemImage);
 				try {
 					game1.setspeed(1);
 				} catch (FileNotFoundException e) {
