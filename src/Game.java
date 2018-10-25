@@ -13,7 +13,7 @@ private Items item;
 
 
 public Game() {
-		player = new Player("file:src\\Playerimg.jpeg" , "Steve");
+		player = new Player( "Steve");
 		item = new Items();
 		
 		

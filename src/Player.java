@@ -10,10 +10,10 @@ public class Player {
 	int ycord;
 	String imgpath;
 	private final int STARTINGX = 250, STARTINGY= 250;
-public Player( String imgpath, String playername) {
+public Player( String playername) {
 	this.xcord = STARTINGX;
 	this.ycord = STARTINGY;
-	this.imgpath = imgpath;
+	this.imgpath = "file:src\\Playerimg.jpeg";
 	this.playername = playername;
 	
 }
