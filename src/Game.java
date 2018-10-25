@@ -3,16 +3,20 @@ public class Game {
 private String playerName;
 private int score;
 private int highScore;
-public Game(String playerName, int score, int highScore) {
+private Player player;
 
-	this.playerName = playerName;
-	this.score = score;
-	this.highScore = highScore;
+Movement move1 = new Movement();
+public Game() {
+player = new Player("file:src\\Playerimg.jpeg" , "Steve");
+	
+
 }
 
 public void collectScores() {
 	
 }
+
+
 
 public String toString() {
 	return "";
