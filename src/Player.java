@@ -21,6 +21,17 @@ public int getxcord() {
 	return xcord;
 }
 
+
+
+public void setXcord(int xcord) {
+	this.xcord = xcord;
+}
+
+
+public void setYcord(int ycord) {
+	this.ycord = ycord;
+}
+
 public int getycord() {
 	return ycord;
 }
