@@ -44,7 +44,7 @@ public class GraphicsDriver extends Application {
 		Group startgroup = new Group(start);
 		Scene startscene = new Scene(startgroup, 1024, 765);
 		startscene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-			int xcords = game1.getxcord();
+			int xcords = []
 			int direction;
 			if(key.getCode()==KeyCode.W) {
 			  	   direction = 1;
