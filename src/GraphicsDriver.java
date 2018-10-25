@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,29 +25,36 @@ public class GraphicsDriver extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		move = new Movement();
+
 		game1 =new Game();
 		Maingroup = new Group();
 		Mainscene = new Scene(Maingroup, 1024, 765);
-		Button start = new Button("Press here to start");
-		start.setOnAction(new EventHandler<ActionEvent>(){
+		Button start1 = new Button("Start as chicken");
+		Button start2 = new Button("Start as cow");
+		start1.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent arg0) {
-			
-				
 				characterimage = new ImageView (game1.getplayerimage());
 				characterimage.setX(game1.getxcords());
 				characterimage.setY(game1.getycords());
 				Maingroup.getChildren().add(characterimage);
+				try {
+					game1.setspeed(1);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				int chickenspeed = game1.getspeed();
+				move = new Movement(chickenspeed);
 				primaryStage.setScene(Mainscene);
 			}
 			
 		});
 	
-		start.setLayoutX(200);
-		start.setLayoutY(200);
+		start1.setLayoutX(200);
+		start1.setLayoutY(200);
 		
-		Group startgroup = new Group(start);
+		Group startgroup = new Group(start1);
 		Scene startscene = new Scene(startgroup, 1024, 765);
 		Mainscene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
 			int xcords = game1.getxcords();
@@ -56,13 +65,21 @@ public class GraphicsDriver extends Application {
 			       characterimage.setX(game1.getxcords());
 				 characterimage.setY(game1.getycords());
 			    }else if(key.getCode()== KeyCode.A) {
-			    	int y = move.moveup(xcords);
-				       game1.setplayercords(y, game1.getxcords());
+			    	int y = move.moveleft(xcords);
+				       game1.setplayercords(y, game1.getycords());
+				       characterimage.setX(game1.getxcords());
+				       characterimage.setY(game1.getycords());
 			    	 
 			    }else if(key.getCode()==KeyCode.D) {
-			    	 move.moveright(xcords);
+			    	int z = move.moveright(xcords);
+			    	 game1.setplayercords(z, game1.getycords());
+				     characterimage.setX(game1.getxcords());
+				     characterimage.setY(game1.getycords());
 			    } else if (key.getCode()==KeyCode.S) {
-			    	 move.movedown(xcords);
+			    	int c = move.movedown(ycords);
+			    	  game1.setplayercords(game1.getxcords(), c);
+				       characterimage.setX(game1.getxcords());
+				       characterimage.setY(game1.getycords());
 			    }
 		
 		      

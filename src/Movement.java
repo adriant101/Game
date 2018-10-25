@@ -1,25 +1,27 @@
 import javafx.scene.input.KeyCode;
 
 public class Movement {
-	
-
+int Speed;
+public Movement (int Speed) {
+	this.Speed = Speed;
+}
 	public int moveup(int ycord) {
-		ycord = ycord-10;
+		ycord = ycord - Speed ;
 		return ycord;
 	}
 
 	public int movedown(int ycord) {
-		ycord = ycord+10;
+		ycord = ycord+Speed;
 		return ycord;
 	}
 
 	public int moveleft(int xcord) {
-		xcord = xcord-10;
+		xcord = xcord - Speed;
 		return xcord;
 	}
 
 	public int moveright(int xcord) {
-		xcord = xcord+10;
+		xcord = xcord + Speed;
 		return xcord;
     }
 	

@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+
 import javafx.scene.image.Image;
 
 public class Game {
@@ -6,16 +8,23 @@ private int score;
 private int highScore;
 private Player player;
 
-Movement move1 = new Movement();
+
 public Game() {
-player = new Player("file:src\\Playerimg.jpeg" , "Steve");
-	
+		player = new Player("file:src\\Playerimg.jpeg" , "Steve");
+
 
 }
 public void setplayercords(int xcords, int ycords) {
 	player.setXcord(xcords);
 	player.setYcord(ycords);
 	
+}
+public int getspeed() {
+	return player.getspeed();
+}
+public void setspeed(int buttonpressed) throws FileNotFoundException {
+	
+	 player.setspeed(buttonpressed);
 }
 public int getxcords() {
 	return player.getxcord();
