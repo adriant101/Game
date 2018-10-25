@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class GraphicsDriver extends Application {
@@ -35,13 +37,28 @@ public class GraphicsDriver extends Application {
 			}
 			
 		});
-		
-		
+	
 		start.setLayoutX(200);
 		start.setLayoutY(200);
 		
 		Group startgroup = new Group(start);
 		Scene startscene = new Scene(startgroup, 1024, 765);
+		startscene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+			int xcords = game1.getxcord();
+			int direction;
+			if(key.getCode()==KeyCode.W) {
+			  	   direction = 1;
+			       
+			    }else if(key.getCode()== KeyCode.A) {
+			    	 direction = 2;
+			    }else if(key.getCode()==KeyCode.D) {
+			    	direction = 3;
+			    } else if (key.getCode()==KeyCode.S) {
+			    	direction = 4;
+			    }
+		
+		      
+		});
 		
 		primaryStage.setScene(startscene);
         primaryStage.setTitle("Lab 7");

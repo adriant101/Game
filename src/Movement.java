@@ -1,3 +1,4 @@
+import javafx.scene.input.KeyCode;
 
 public class Movement {
 	
@@ -36,9 +37,17 @@ public class Movement {
 			
 		}
 		else if (userKey.equalsIgnoreCase("d")) {
-			moveright(15);
+			moveright(10);
 		}
 	}
+	
+	public int WASD() {
+    if(key.getCode()==KeyCode.W) {
+  	  int direction =1;
+        System.out.println("You pressed enter");
+    }else if(key.getCode()== KeyCode.A) {
+  	  
+    }
 	
 	
 //	public boolean enemycollisiondetection(int enemyxcord, int enemyycord, int playerxcord, int playerycord) {
