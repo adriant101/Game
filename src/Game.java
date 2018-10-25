@@ -6,7 +6,7 @@ private Enemy enemy;
 private Items item;
 private int score;
 private int highScore;
-
+Movement move1 = new Movement();
 public Game() {
 	player = new Player("file:src\\Playerimg.jpeg" , "Steve");
 	
@@ -26,6 +26,8 @@ public Image getplayerimage() {
 public void collectScores() {
 	
 }
+
+
 
 public String toString() {
 	return "";
