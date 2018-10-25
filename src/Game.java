@@ -12,7 +12,11 @@ player = new Player("file:src\\Playerimg.jpeg" , "Steve");
 	
 
 }
-
+public void setplayercords(int xcords, int ycords) {
+	player.setXcord(xcords);
+	player.setYcord(ycords);
+	
+}
 public int getxcords() {
 	return player.getxcord();
 }

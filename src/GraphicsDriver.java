@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 public class GraphicsDriver extends Application {
 	Game game1;
 	Movement move;
+	ImageView characterimage; 
 	public static void main(String[] args) {
 		launch(args);
 
@@ -29,7 +30,7 @@ public class GraphicsDriver extends Application {
 			public void handle(ActionEvent arg0) {
 			
 				
-				ImageView characterimage = new ImageView(game1.getplayerimage());
+				characterimage = new ImageView (game1.getplayerimage());
 				characterimage.setX(game1.getxcords());
 				characterimage.setY(game1.getycords());
 				Group Maingroup = new Group(characterimage);
@@ -48,9 +49,14 @@ public class GraphicsDriver extends Application {
 			int xcords = game1.getxcords();
 			int ycords = game1.getycords();
 			if(key.getCode()==KeyCode.W) {
-			       move.moveup(ycords);
+			       int x = move.moveup(ycords);
+			       game1.setplayercords(game1.getxcords(), x);
+			       characterimage.setX(game1.getxcords());
+				 characterimage.setY(game1.getycords());
 			    }else if(key.getCode()== KeyCode.A) {
-			    	 move.moveleft(xcords);
+			    	int y = move.moveup(xcords);
+				       game1.setplayercords(y, game1.getxcords());
+			    	 
 			    }else if(key.getCode()==KeyCode.D) {
 			    	 move.moveright(xcords);
 			    } else if (key.getCode()==KeyCode.S) {

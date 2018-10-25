@@ -41,13 +41,6 @@ public class Movement {
 		}
 	}
 	
-	public int WASD() {
-    if(key.getCode()==KeyCode.W) {
-  	  int direction =1;
-        System.out.println("You pressed enter");
-    }else if(key.getCode()== KeyCode.A) {
-  	  
-    }
 	
 	
 //	public boolean enemycollisiondetection(int enemyxcord, int enemyycord, int playerxcord, int playerycord) {
