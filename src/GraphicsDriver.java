@@ -14,6 +14,8 @@ public class GraphicsDriver extends Application {
 	Game game1;
 	Movement move;
 	ImageView characterimage; 
+	Scene Mainscene;
+	Group Maingroup;
 	public static void main(String[] args) {
 		launch(args);
 
@@ -21,9 +23,9 @@ public class GraphicsDriver extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		boolean alive =false;
-;
-		
+		game1 =new Game();
+		Maingroup = new Group();
+		Mainscene = new Scene(Maingroup, 1024, 765);
 		Button start = new Button("Press here to start");
 		start.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
@@ -33,8 +35,7 @@ public class GraphicsDriver extends Application {
 				characterimage = new ImageView (game1.getplayerimage());
 				characterimage.setX(game1.getxcords());
 				characterimage.setY(game1.getycords());
-				Group Maingroup = new Group(characterimage);
-				Scene Mainscene = new Scene(Maingroup, 1024, 765);
+				Maingroup.getChildren().add(characterimage);
 				primaryStage.setScene(Mainscene);
 			}
 			
@@ -45,7 +46,7 @@ public class GraphicsDriver extends Application {
 		
 		Group startgroup = new Group(start);
 		Scene startscene = new Scene(startgroup, 1024, 765);
-		startscene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+		Mainscene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
 			int xcords = game1.getxcords();
 			int ycords = game1.getycords();
 			if(key.getCode()==KeyCode.W) {
