@@ -23,6 +23,7 @@ public class GraphicsDriver extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		move = new Movement();
 		game1 =new Game();
 		Maingroup = new Group();
 		Mainscene = new Scene(Maingroup, 1024, 765);

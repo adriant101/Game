@@ -4,22 +4,22 @@ public class Movement {
 	
 
 	public int moveup(int ycord) {
-		ycord = ycord+1;
+		ycord = ycord-10;
 		return ycord;
 	}
 
 	public int movedown(int ycord) {
-		ycord = ycord-1;
+		ycord = ycord+10;
 		return ycord;
 	}
 
 	public int moveleft(int xcord) {
-		xcord = xcord-1;
+		xcord = xcord-10;
 		return xcord;
 	}
 
 	public int moveright(int xcord) {
-		xcord = xcord+1;
+		xcord = xcord+10;
 		return xcord;
     }
 	
