@@ -11,7 +11,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class GraphicsDriver extends Application {
-
+	Game game1;
+	Movement move;
 	public static void main(String[] args) {
 		launch(args);
 
@@ -27,7 +28,7 @@ public class GraphicsDriver extends Application {
 			@Override
 			public void handle(ActionEvent arg0) {
 			
-				Game game1 = new Game();
+				
 				ImageView characterimage = new ImageView(game1.getplayerimage());
 				characterimage.setX(game1.getxcords());
 				characterimage.setY(game1.getycords());
@@ -44,17 +45,16 @@ public class GraphicsDriver extends Application {
 		Group startgroup = new Group(start);
 		Scene startscene = new Scene(startgroup, 1024, 765);
 		startscene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-			int xcords = []
-			int direction;
+			int xcords = game1.getxcords();
+			int ycords = game1.getycords();
 			if(key.getCode()==KeyCode.W) {
-			  	   direction = 1;
-			       
+			       move.moveup(ycords);
 			    }else if(key.getCode()== KeyCode.A) {
-			    	 direction = 2;
+			    	 move.moveleft(xcords);
 			    }else if(key.getCode()==KeyCode.D) {
-			    	direction = 3;
+			    	 move.moveright(xcords);
 			    } else if (key.getCode()==KeyCode.S) {
-			    	direction = 4;
+			    	 move.movedown(xcords);
 			    }
 		
 		      
