@@ -56,29 +56,7 @@ public int getycords() {
 	return player.getycord();
 
 }
-public int getitemxcords() {
-	
-	int x=0;
-	for(Items i : items) {
-		
-	 x =  i.getxLocation();
-	 
-	
-	}
-	return x;
-	
-}
-public int getitemycords() {
-	int y=0;
-	for(Items i : items) {
-		
-	 y =  i.getxLocation();
-	 
-	
-	}
-	return y;
 
-}
 
 public Image getplayerimage() {
 	String imagestr = player.getyourimage();
@@ -86,16 +64,7 @@ public Image getplayerimage() {
 	return playerimage;
 }
 
-public Image getitemimage() {
-	Image img = null;
-	for(Items i : items) {
-		String imagestr = i.getitemimage();
-		Image itemimage = new Image(imagestr);
-				img = itemimage;
-	}
-	
-	return img;
-}
+
 public void collectScores() {
 	
 }
