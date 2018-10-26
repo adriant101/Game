@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javafx.scene.image.Image;
 
@@ -10,17 +11,22 @@ private int score;
 private int highScore;
 private Player player;
 private Items item;
-private Items item2;
+Items[] itemList;
+public static List<Items> items = new ArrayList<Items>();
+
+
 
 
 public Game() {
 		player = new Player("Steve");
-		item = new Items();
-		item2 = new Items();
 		
+		for (int i= 0; i < 5; i++) {
+		   items.add(new Items());
+		   }
 		
 
 }
+
 public void setplayercords(int xcords, int ycords) {
 	player.setXcord(xcords);
 	player.setYcord(ycords);
@@ -28,8 +34,12 @@ public void setplayercords(int xcords, int ycords) {
 }
 
 public void setItemCords(int xcords, int ycords) {
-	item.setxLocation(xcords);
-	item.setyLocation(ycords);
+	for (Items i:items) {
+		i.setxLocation(xcords);
+		i.setyLocation(ycords);
+	}
+	
+	
 }
 
 public int getspeed() {
@@ -47,10 +57,26 @@ public int getycords() {
 
 }
 public int getitemxcords() {
-	return item.getxLocation();
+	
+	int x=0;
+	for(Items i : items) {
+		
+	 x =  i.getxLocation();
+	 
+	
+	}
+	return x;
+	
 }
 public int getitemycords() {
-	return item.getyLocation();
+	int y=0;
+	for(Items i : items) {
+		
+	 y =  i.getxLocation();
+	 
+	
+	}
+	return y;
 
 }
 
@@ -61,9 +87,14 @@ public Image getplayerimage() {
 }
 
 public Image getitemimage() {
-	String imagestr = item.getitemimage();
-	Image itemimage = new Image(imagestr);
-	return itemimage;
+	Image img = null;
+	for(Items i : items) {
+		String imagestr = i.getitemimage();
+		Image itemimage = new Image(imagestr);
+				img = itemimage;
+	}
+	
+	return img;
 }
 public void collectScores() {
 	

@@ -13,8 +13,8 @@ public class Items {
 	//Constructor
 	public Items() {
 		
-		this.xLocation = rand.nextInt(900)+10;
-		this.yLocation = rand.nextInt(900)+10;
+		this.xLocation = rand.nextInt(500)+10;
+		this.yLocation = rand.nextInt(500)+10;
 		this.imagePath = "file:src\\item.png";
 	}
 	public void setxLocation(int xLocation) {
