@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class GraphicsDriver extends Application {
+	Stage primaryStage;
 	Game game1;
 	Movement move;
 	ImageView characterimage; 
@@ -26,31 +27,33 @@ public class GraphicsDriver extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-
-		game1 =new Game();
-		Maingroup = new Group();
-		Mainscene = new Scene(Maingroup, 1024, 765);
+		this.primaryStage = primaryStage;
+		
+		game1 =new Game(Mainscene);
+		
+		/*Maingroup = new Group();
+		Mainscene = new Scene(Maingroup, 1024, 765);*/
 		Button start1 = new Button("Start as chicken");
 		Button start2 = new Button("Start as cow");
 		start1.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent arg0) {
 				
-				for (int i = 0; i < game1.items.size();i++ ) {
+				/*for (int i = 0; i < game1.items.size();i++ ) {
 					
 					itemImage = new ImageView (game1.items.get(i).getitemimage());
 					itemImage.setX(game1.items.get(i).getxLocation());
 					itemImage.setY(game1.items.get(i).getyLocation());
 					itemImage.setFitHeight(25);itemImage.setFitWidth(20);
 					Maingroup.getChildren().add(itemImage);
-				}
+				}*/
 					
 					
 				
-				characterimage = new ImageView (game1.getplayerimage());
+		/*		characterimage = new ImageView (game1.getplayerimage());
 				characterimage.setX(game1.getxcords());
 				characterimage.setY(game1.getycords());
-				Maingroup.getChildren().add(characterimage);
+				*/
 				
 				
 				try {
@@ -61,7 +64,7 @@ public class GraphicsDriver extends Application {
 				}
 				int chickenspeed = game1.getspeed();
 				move = new Movement(chickenspeed);
-				primaryStage.setScene(Mainscene);
+				primaryStage.setScene(game1.start());
 			}
 			
 		});
@@ -71,7 +74,7 @@ public class GraphicsDriver extends Application {
 		
 		Group startgroup = new Group(start1);
 		Scene startscene = new Scene(startgroup, 1024, 765);
-		Mainscene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+		/*Mainscene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
 			int xcords = game1.getxcords();
 			int ycords = game1.getycords();
 			if(key.getCode()==KeyCode.W) {
@@ -98,7 +101,7 @@ public class GraphicsDriver extends Application {
 			    }
 		
 		      
-		});
+		});*/
 		
 		primaryStage.setScene(startscene);
         primaryStage.setTitle("Lab 7");

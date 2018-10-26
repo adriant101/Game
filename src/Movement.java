@@ -1,7 +1,10 @@
+import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class Movement {
-int Speed;
+private int Speed;
+
 public Movement (int Speed) {
 	this.Speed = Speed;
 }
@@ -25,23 +28,7 @@ public Movement (int Speed) {
 		return xcord;
     }
 	
-	//WASD 
-	public void WASD(String userKey) {
-		if (userKey.equalsIgnoreCase("w"))
-				{
-			moveup(10);
-				}
-		else if(userKey.equalsIgnoreCase("a")) {
-			moveleft(10);
-		}
-		else if (userKey.equalsIgnoreCase("s")) {
-			movedown(10);
-			
-		}
-		else if (userKey.equalsIgnoreCase("d")) {
-			moveright(10);
-		}
-	}
+	
 	
 	
 	
