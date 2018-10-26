@@ -36,8 +36,9 @@ public class GraphicsDriver extends Application {
 			@Override
 			public void handle(ActionEvent arg0) {
 				
-				for (Items i : game1.items ) {
-					itemImage = new ImageView (game1.getitemimage());
+				for (int i = 0; i < game1.items.size();i++ ) {
+					
+					itemImage = new ImageView (game1.items.get(i).getitemimage());
 					itemImage.setX(game1.getitemxcords());
 					itemImage.setY(game1.getitemycords());
 					itemImage.setFitHeight(25);itemImage.setFitWidth(20);
