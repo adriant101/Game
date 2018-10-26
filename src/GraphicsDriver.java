@@ -39,8 +39,8 @@ public class GraphicsDriver extends Application {
 				for (int i = 0; i < game1.items.size();i++ ) {
 					
 					itemImage = new ImageView (game1.items.get(i).getitemimage());
-					itemImage.setX(game1.getitemxcords());
-					itemImage.setY(game1.getitemycords());
+					itemImage.setX(game1.items.get(i).getxLocation());
+					itemImage.setY(game1.items.get(i).getyLocation());
 					itemImage.setFitHeight(25);itemImage.setFitWidth(20);
 					Maingroup.getChildren().add(itemImage);
 				}
