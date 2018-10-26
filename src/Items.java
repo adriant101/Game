@@ -32,9 +32,7 @@ public class Items {
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
 	}
-	public void setRand(Random rand) {
-		this.rand = rand;
-	}
+	
 	public String getitemimage() {
 		return imagePath;
 	}

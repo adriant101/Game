@@ -14,7 +14,7 @@ public Movement (int Speed) {
 	}
 
 	public int movedown(int ycord) {
-		ycord = ycord+Speed;
+		ycord = ycord+ Speed;
 		return ycord;
 	}
 

@@ -15,17 +15,27 @@ public class Game {
 private String playerName;
 private int score;
 private int highScore;
-private Player player =new Player("Steve");;
+private Player player = new Player("Steve");;
 private Items item;
 Items[] itemList;
 private Scene thescene;
 private Group Maingroup = new Group();
 public static List<Items> items = new ArrayList<Items>();
 private ImageView characterimage;
-private Movement move = new Movement(15);
+
+private Movement move;
 private ImageView itemImage;
 
+ 
  public Scene start() {
+	 try {
+		setspeed();
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	 move = new Movement(getspeed());
+	 
 	 thescene = new Scene(Maingroup, 1024, 765);
     characterimage = new ImageView (getplayerimage());
     characterimage.setX(getxcords());
@@ -98,9 +108,9 @@ public void setItemCords(int xcords, int ycords) {
 public int getspeed() {
 	return player.getspeed();
 }
-public void setspeed(int buttonpressed) throws FileNotFoundException {
+public void setspeed() throws FileNotFoundException {
 	
-	 player.setspeed(buttonpressed);
+	 player.setspeed(1);
 }
 public int getxcords() {
 	return player.getxcord();

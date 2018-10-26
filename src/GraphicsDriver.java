@@ -29,38 +29,31 @@ public class GraphicsDriver extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
 		
-		game1 =new Game(Mainscene);
+		game1 = new Game(Mainscene);
 		
-		/*Maingroup = new Group();
-		Mainscene = new Scene(Maingroup, 1024, 765);*/
+
 		Button start1 = new Button("Start as chicken");
 		Button start2 = new Button("Start as cow");
 		start1.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent arg0) {
 				
-				/*for (int i = 0; i < game1.items.size();i++ ) {
-					
-					itemImage = new ImageView (game1.items.get(i).getitemimage());
-					itemImage.setX(game1.items.get(i).getxLocation());
-					itemImage.setY(game1.items.get(i).getyLocation());
-					itemImage.setFitHeight(25);itemImage.setFitWidth(20);
-					Maingroup.getChildren().add(itemImage);
-				}*/
+				
 					
 					
 				
 
 				
 				
-				try {
+				/*try {
 					game1.setspeed(1);
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				int chickenspeed = game1.getspeed();
-				move = new Movement(chickenspeed);
+				move = new Movement(chickenspeed);*/
+				
 				primaryStage.setScene(game1.start());
 			}
 			
@@ -71,34 +64,7 @@ public class GraphicsDriver extends Application {
 		
 		Group startgroup = new Group(start1);
 		Scene startscene = new Scene(startgroup, 1024, 765);
-		/*Mainscene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-			int xcords = game1.getxcords();
-			int ycords = game1.getycords();
-			if(key.getCode()==KeyCode.W) {
-			       int x = move.moveup(ycords);
-			       game1.setplayercords(game1.getxcords(), x);
-			       characterimage.setX(game1.getxcords());
-				 characterimage.setY(game1.getycords());
-			    }else if(key.getCode()== KeyCode.A) {
-			    	int y = move.moveleft(xcords);
-				       game1.setplayercords(y, game1.getycords());
-				       characterimage.setX(game1.getxcords());
-				       characterimage.setY(game1.getycords());
-			    	 
-			    }else if(key.getCode()==KeyCode.D) {
-			    	int z = move.moveright(xcords);
-			    	 game1.setplayercords(z, game1.getycords());
-				     characterimage.setX(game1.getxcords());
-				     characterimage.setY(game1.getycords());
-			    } else if (key.getCode()==KeyCode.S) {
-			    	int c = move.movedown(ycords);
-			    	  game1.setplayercords(game1.getxcords(), c);
-				       characterimage.setX(game1.getxcords());
-				       characterimage.setY(game1.getycords());
-			    }
 		
-		      
-		});*/
 		
 		primaryStage.setScene(startscene);
         primaryStage.setTitle("Lab 7");

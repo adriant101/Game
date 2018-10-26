@@ -21,6 +21,7 @@ public Player( String playername) {
 public int getspeed() {
 	return speed;
 }
+
 public void setspeed(int buttonpressed) throws FileNotFoundException {
 	Scanner myscan;
 	if (buttonpressed == 1) {
@@ -28,7 +29,7 @@ public void setspeed(int buttonpressed) throws FileNotFoundException {
 		myscan = new Scanner(myFile);
 		speed = (int) Integer.parseInt(myscan.nextLine());
 		
-	}else if (buttonpressed ==2) {
+	}else if (buttonpressed == 2) {
 		File myFile = new File("src\\Cow.txt");
 		myscan = new Scanner(myFile);
 		speed = (int) Integer.parseInt(myscan.nextLine());
