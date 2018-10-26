@@ -50,10 +50,7 @@ public class GraphicsDriver extends Application {
 					
 					
 				
-		/*		characterimage = new ImageView (game1.getplayerimage());
-				characterimage.setX(game1.getxcords());
-				characterimage.setY(game1.getycords());
-				*/
+
 				
 				
 				try {
