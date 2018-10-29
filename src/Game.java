@@ -1,7 +1,11 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.swing.Timer;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -20,14 +24,23 @@ private Items item;
 Items[] itemList;
 private Scene thescene;
 private Group Maingroup = new Group();
+
 public static List<Items> items = new ArrayList<Items>();
 private ImageView characterimage;
 
+private Enemy theenemy;
 private Movement move;
 private ImageView itemImage;
+private ImageView enemyview;
 
  
  public Scene start() {
+	 theenemy = new Enemy(200, 200, "Red guy");
+	 Timer newtimer = new Timer(100, new myTimeHandler());
+	 Image enemyimage = new Image(theenemy.getyourimage());
+	 enemyview = new ImageView(enemyimage);
+	 Maingroup.getChildren().add(enemyview);
+	 newtimer.start();
 	 try {
 		setspeed();
 	} catch (FileNotFoundException e) {
@@ -124,6 +137,7 @@ public int getycords() {
 public Image getplayerimage() {
 	String imagestr = player.getyourimage();
 	Image playerimage = new Image(imagestr);
+	
 	return playerimage;
 }
 
@@ -136,5 +150,16 @@ public void collectScores() {
 
 public String toString() {
 	return "";
+}
+private class myTimeHandler implements ActionListener {
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		int x = theenemy.findxcords(player.getxcord());
+		int y =theenemy.findycords(player.getycord());
+		enemyview.setLayoutX(x);
+		enemyview.setLayoutY(y);
+	}
+	
 }
 }

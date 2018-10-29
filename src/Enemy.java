@@ -5,13 +5,31 @@ public class Enemy {
 	int ycord;
 	int speed;
 	String imgpath;
-public Enemy(int xcord, int ycord, String imgpath, String enemyname) {
+public Enemy(int xcord, int ycord, String enemyname) {
 	this.xcord = xcord;
 	this.ycord = ycord;
-	this.imgpath = imgpath;
+	this.imgpath = "file:src\\The_Red_Guy.jpg";
 	this.enemyname = enemyname;
 }
 
+public int findxcords(int playerxcords) {
+	if (xcord < playerxcords) {
+		xcord = xcord+8;
+	}else if (xcord>playerxcords) {
+		xcord = xcord-8;
+	}
+	return xcord;
+	
+}
+public int findycords(int playerycords) {
+	if (ycord < playerycords) {
+		ycord = ycord+8;
+	}else if (ycord>playerycords) {
+		ycord = ycord-8;
+	}
+	return ycord;
+	
+}
 public String getyourimage() {
 	return imgpath;
 }
