@@ -38,6 +38,7 @@ private Collision rectDraw = new Collision();
 private double enemyX, enemyY;
 private Rectangle enemy, playa = new Rectangle();
 private boolean collisionDetected = false;
+private Rectangle itemRect = new Rectangle();
 
  
  public Scene start() {
@@ -92,13 +93,21 @@ private boolean collisionDetected = false;
 		itemImage = new ImageView (items.get(i).getitemimage());
 		itemImage.setX(items.get(i).getxLocation());
 		itemImage.setY(items.get(i).getyLocation());
+		 
+		
+		
 		itemImage.setFitHeight(25);itemImage.setFitWidth(20);
 		Maingroup.getChildren().add(itemImage);}
 	
-	
+	if (itemRect.getBoundsInLocal().intersects(playa.getBoundsInLocal())) {
+		
+		 
+		 System.out.println("Item Collision");
+		 }
 	
 	return thescene;
 	}
+ 
 
 
 
@@ -185,16 +194,19 @@ private class myTimeHandler implements ActionListener {
 				
 			 collisionDetected = true;
 			 System.out.println(collisionDetected);
-			 
-		
-	}
-		
+	} 
+		for (int i=0 ; i < items.size();i++ ) {
+		 itemRect = rectDraw.getBounds(items.get(i).getxLocation(), items.get(i).getyLocation(), 25, 20);
+		 if (itemRect.getBoundsInLocal().intersects(playa.getBoundsInLocal())) {
+			 System.out.println("Item Collision");
+		 }
 		}
+	
 		
  
 	 }
 	
-		
+}
 }
 
 	
