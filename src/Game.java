@@ -20,7 +20,7 @@ import javafx.scene.text.Text;
 
 public class Game {
 private String playerName;
-private int score;
+private int score = 0;
 private int highScore;
 private Player player = new Player("Steve");;
 private Items item;
@@ -40,6 +40,8 @@ private double enemyX, enemyY;
 private Rectangle enemy, playa = new Rectangle();
 private boolean collisionDetected = false;
 private Rectangle itemRect = new Rectangle();
+
+private Text myScore = new Text();
 
  
  public Scene start() {
@@ -88,17 +90,24 @@ private Rectangle itemRect = new Rectangle();
 			       characterimage.setX(getxcords());
 			       characterimage.setY(getycords());
 		    }
-});
+}); //Items
 	for (int i = 0; i < items.size();i++ ) {
+		
 		
 		itemImage = new ImageView (items.get(i).getitemimage());
 		itemImage.setX(items.get(i).getxLocation());
 		itemImage.setY(items.get(i).getyLocation());
-		 
-		
-		
 		itemImage.setFitHeight(25);itemImage.setFitWidth(20);
-		Maingroup.getChildren().add(itemImage);}
+		Maingroup.getChildren().add(itemImage);
+		
+		}
+		//Score
+		myScore.setLayoutX(800);myScore.setLayoutY(700);
+		Maingroup.getChildren().add(myScore);
+		
+	
+		//GameOver
+		
 	
 
 	
@@ -196,18 +205,23 @@ private class myTimeHandler implements ActionListener {
 		 itemRect = rectDraw.getBounds(items.get(i).getxLocation(), items.get(i).getyLocation(), 25, 20);
 		Bounds itemRectBounds = itemRect.getBoundsInLocal();
 		 if (itemRectBounds.intersects(playa.getBoundsInLocal())) {
-			 System.out.println("Item Collision");
+			 score += 5;
 			 items.remove(i);
+			 myScore.setText("Score: "+score);
+			 
+			 
 			 
 			 
 			/* for (int j = 0; j < items.size();j++ ) {
 				items.remove(j); 
 			 }*/
-			
-		 
-		}}
+			}}
 	
-		
+		/*if (itemImageRemove == true) {
+			System.out.println("Hello");
+			for (int i =0; i <items.size(); i++) {
+				itemImage.setImage(null);;
+			}}*/
  
 	 }
 	
