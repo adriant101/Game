@@ -12,6 +12,8 @@ public Enemy(int xcord, int ycord, String enemyname) {
 	this.enemyname = enemyname;
 }
 
+
+
 public int findxcords(int playerxcords) {
 	if (xcord < playerxcords) {
 		xcord = xcord+8;

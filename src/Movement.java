@@ -14,19 +14,16 @@ private int height;
 public Movement (int Speed) {
 	this.Speed = Speed;
 }
-public Movement (int x, int y, int width, int height) {
+/*public Movement (int x, int y, int width, int height) {
 	this.x = x;
 	this.y = y;
 	this.width = width;
 	this.height = height;
 	
-}
+}*/
 
 
-//drawing rectangle
-public Rectangle getBounds() {
-	return new Rectangle(x, y, width, height);
-}
+
 
 
 	public int moveup(int ycord) {

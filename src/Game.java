@@ -13,6 +13,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 public class Game {
@@ -32,10 +34,15 @@ private Enemy theenemy;
 private Movement move;
 private ImageView itemImage;
 private ImageView enemyview;
+private Collision rectDraw = new Collision();
+private double enemyX, enemyY;
+private Rectangle enemy, playa = new Rectangle();
+private boolean collisionDetected = false;
 
  
  public Scene start() {
-	 theenemy = new Enemy(200, 200, "Red guy");
+	 
+	 theenemy = new Enemy(600, 200, "Red guy");
 	 Timer newtimer = new Timer(100, new myTimeHandler());
 	 Image enemyimage = new Image(theenemy.getyourimage());
 	 enemyview = new ImageView(enemyimage);
@@ -87,6 +94,9 @@ private ImageView enemyview;
 		itemImage.setY(items.get(i).getyLocation());
 		itemImage.setFitHeight(25);itemImage.setFitWidth(20);
 		Maingroup.getChildren().add(itemImage);}
+	
+	
+	
 	return thescene;
 	}
 
@@ -94,6 +104,10 @@ private ImageView enemyview;
 
 public Game(Scene thescene) {
 		this.thescene = thescene;
+		
+		
+		
+		
 		
 		for (int i= 0; i < 5; i++) {
 		   items.add(new Items());
@@ -151,15 +165,38 @@ public void collectScores() {
 public String toString() {
 	return "";
 }
+
+	
+	
+
 private class myTimeHandler implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		int x = theenemy.findxcords(player.getxcord());
-		int y =theenemy.findycords(player.getycord());
-		enemyview.setLayoutX(x);
-		enemyview.setLayoutY(y);
+		 enemyX = theenemy.findxcords(player.getxcord());
+		 enemyY = theenemy.findycords(player.getycord());
+		enemyview.setLayoutX(enemyX);
+		enemyview.setLayoutY(enemyY);
+		
+		 enemy = rectDraw.getBounds(enemyX, enemyY, 50, 82);
+		 playa = rectDraw.getBounds(player.getxcord(), player.getycord(), 50, 50);
+		 
+		 if (enemy.getBoundsInLocal().intersects(playa.getBoundsInLocal())) {
+				
+			 collisionDetected = true;
+			 System.out.println(collisionDetected);
+			 
+		
 	}
+		
+		}
+		
+ 
+	 }
 	
+		
 }
-}
+
+	
+
+

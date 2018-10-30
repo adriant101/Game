@@ -10,6 +10,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class GraphicsDriver extends Application {
@@ -31,30 +33,19 @@ public class GraphicsDriver extends Application {
 		
 		game1 = new Game(Mainscene);
 		
+;		
 
 		Button start1 = new Button("Start as chicken");
 		Button start2 = new Button("Start as cow");
 		start1.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent arg0) {
-				
-				
-					
-					
-				
-
-				
-				
-				/*try {
-					game1.setspeed(1);
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				int chickenspeed = game1.getspeed();
-				move = new Movement(chickenspeed);*/
+	
 				
 				primaryStage.setScene(game1.start());
+				
+				
+				
 			}
 			
 		});
@@ -64,6 +55,9 @@ public class GraphicsDriver extends Application {
 		
 		Group startgroup = new Group(start1);
 		Scene startscene = new Scene(startgroup, 1024, 765);
+		
+		
+		
 		
 		
 		primaryStage.setScene(startscene);
