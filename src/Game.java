@@ -40,14 +40,16 @@ private double enemyX, enemyY;
 private Rectangle enemy, playa = new Rectangle();
 private boolean collisionDetected = false;
 private Rectangle itemRect = new Rectangle();
+private Timer newtimer = new Timer(100, new myTimeHandler());
 
 private Text myScore = new Text();
+private Text gameOver = new Text();
 
  
  public Scene start() {
 	 
 	 theenemy = new Enemy(600, 200, "Red guy");
-	 Timer newtimer = new Timer(100, new myTimeHandler());
+	
 	 Image enemyimage = new Image(theenemy.getyourimage());
 	 enemyview = new ImageView(enemyimage);
 	 Maingroup.getChildren().add(enemyview);
@@ -105,9 +107,10 @@ private Text myScore = new Text();
 		myScore.setLayoutX(800);myScore.setLayoutY(700);
 		Maingroup.getChildren().add(myScore);
 		
-	
-		//GameOver
-		
+	//Game Over
+		gameOver.setLayoutX(400);gameOver.setLayoutY(300);
+		gameOver.setFill(Color.BLACK);gameOver.setStyle("-fx-font: 48 arial;");
+		Maingroup.getChildren().add(gameOver);
 	
 
 	
@@ -199,7 +202,11 @@ private class myTimeHandler implements ActionListener {
 		 if (enemy.getBoundsInLocal().intersects(playa.getBoundsInLocal())) {
 				
 			 collisionDetected = true;
-			 System.out.println(collisionDetected);
+			//GameOver
+				newtimer.stop();
+				gameOver.setText("Game Over");
+				
+			
 	} 
 		for (int i=0 ; i < items.size();i++ ) {
 		 itemRect = rectDraw.getBounds(items.get(i).getxLocation(), items.get(i).getyLocation(), 25, 20);
@@ -210,18 +217,9 @@ private class myTimeHandler implements ActionListener {
 			 myScore.setText("Score: "+score);
 			 
 			 
-			 
-			 
-			/* for (int j = 0; j < items.size();j++ ) {
-				items.remove(j); 
-			 }*/
-			}}
+			}} 
 	
-		/*if (itemImageRemove == true) {
-			System.out.println("Hello");
-			for (int i =0; i <items.size(); i++) {
-				itemImage.setImage(null);;
-			}}*/
+
  
 	 }
 	
