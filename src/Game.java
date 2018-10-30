@@ -112,6 +112,7 @@ private Text gameOver = new Text();
 		gameOver.setFill(Color.BLACK);gameOver.setStyle("-fx-font: 48 arial;");
 		Maingroup.getChildren().add(gameOver);
 	
+	
 
 	
 	return thescene;
@@ -187,7 +188,7 @@ public String toString() {
 	
 	
 
-private class myTimeHandler implements ActionListener {
+public class myTimeHandler implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
