@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.swing.Timer;
 
+import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -99,11 +100,7 @@ private Rectangle itemRect = new Rectangle();
 		itemImage.setFitHeight(25);itemImage.setFitWidth(20);
 		Maingroup.getChildren().add(itemImage);}
 	
-	if (itemRect.getBoundsInLocal().intersects(playa.getBoundsInLocal())) {
-		
-		 
-		 System.out.println("Item Collision");
-		 }
+
 	
 	return thescene;
 	}
@@ -197,10 +194,18 @@ private class myTimeHandler implements ActionListener {
 	} 
 		for (int i=0 ; i < items.size();i++ ) {
 		 itemRect = rectDraw.getBounds(items.get(i).getxLocation(), items.get(i).getyLocation(), 25, 20);
-		 if (itemRect.getBoundsInLocal().intersects(playa.getBoundsInLocal())) {
+		Bounds itemRectBounds = itemRect.getBoundsInLocal();
+		 if (itemRectBounds.intersects(playa.getBoundsInLocal())) {
 			 System.out.println("Item Collision");
-		 }
-		}
+			 items.remove(i);
+			 
+			 
+			/* for (int j = 0; j < items.size();j++ ) {
+				items.remove(j); 
+			 }*/
+			
+		 
+		}}
 	
 		
  
