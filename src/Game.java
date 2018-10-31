@@ -28,7 +28,7 @@ Items[] itemList;
 private Scene thescene;
 private Group Maingroup = new Group();
 
-public static List<Items> items = new ArrayList<Items>();
+public  List<Items> items = new ArrayList<Items>();
 private ImageView characterimage;
 
 private Enemy theenemy;
@@ -44,8 +44,11 @@ private Timer newtimer = new Timer(100, new myTimeHandler());
 
 private Text myScore = new Text();
 private Text gameOver = new Text();
+private Text player_score = new Text();
 
- 
+ public void setPlayername(String playername) {
+	 player.setplayername(playername);
+ }
  public Scene start() {
 	 
 	 theenemy = new Enemy(600, 200, "Red guy");
@@ -95,7 +98,7 @@ private Text gameOver = new Text();
 }); //Items
 	for (int i = 0; i < items.size();i++ ) {
 		
-		
+
 		itemImage = new ImageView (items.get(i).getitemimage());
 		itemImage.setX(items.get(i).getxLocation());
 		itemImage.setY(items.get(i).getyLocation());
@@ -108,9 +111,12 @@ private Text gameOver = new Text();
 		Maingroup.getChildren().add(myScore);
 		
 	//Game Over
+		player_score.setLayoutX(400);
+		player_score.setLayoutY(250);
 		gameOver.setLayoutX(400);gameOver.setLayoutY(300);
 		gameOver.setFill(Color.BLACK);gameOver.setStyle("-fx-font: 48 arial;");
 		Maingroup.getChildren().add(gameOver);
+		Maingroup.getChildren().add(player_score);
 	
 	
 
@@ -206,6 +212,8 @@ public class myTimeHandler implements ActionListener {
 			//GameOver
 				newtimer.stop();
 				gameOver.setText("Game Over");
+				player_score.setText(player.getname() +"  :  " + GraphicsDriver.score);
+				
 				
 			
 	} 
@@ -213,13 +221,13 @@ public class myTimeHandler implements ActionListener {
 		 itemRect = rectDraw.getBounds(items.get(i).getxLocation(), items.get(i).getyLocation(), 25, 20);
 		Bounds itemRectBounds = itemRect.getBoundsInLocal();
 		 if (itemRectBounds.intersects(playa.getBoundsInLocal())) {
-			 score += 5;
+			 GraphicsDriver.score += 5;
 			 items.remove(i);
-			 myScore.setText("Score: "+score);
+			 myScore.setText("Score: "+GraphicsDriver.score);
 			 
 			 
 			}} 
-	
+		
 
  
 	 }

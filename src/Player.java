@@ -58,6 +58,12 @@ public void setYcord(int ycord) {
 public int getycord() {
 	return ycord;
 }
+public void setplayername(String Playername) {
+	playername = Playername;
+}
+public String getname() {
+	return playername;
+}
 }
 
 
