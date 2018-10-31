@@ -46,7 +46,7 @@ private Rectangle enemy, playa = new Rectangle();
 private boolean collisionDetected = false;
 private Rectangle itemRect = new Rectangle();
 private Timer newtimer = new Timer(100, new myTimeHandler());
-
+private Bounds itemRectBounds = null;
 private Text myScore = new Text();
 private Text gameOver = new Text();
 private Text player_score = new Text();
@@ -231,6 +231,7 @@ public class myTimeHandler implements ActionListener {
 			 itemImage.get(i).setImage(null);
 			 itemImage.remove(i);
 			 items.remove(i);
+			 ;
 			
 			
 			 myScore.setText("Score: "+GraphicsDriver.score);
@@ -240,7 +241,23 @@ public class myTimeHandler implements ActionListener {
 			}
 		
 if (items.size() == 0) {
-	System.out.println("time for stage 2");
+	itemRectBounds= null;
+	
+	for (int i= 0; i < 6; i++) {
+		   items.add(new Items());
+		   }
+	for (int i = 0; i < items.size();i++ ) {
+		
+		 itemImage.add(new ImageView(items.get(i).getitemimage()));
+		 itemImage.get(i).setX(items.get(i).getxLocation());
+		 itemImage.get(i).setY(items.get(i).getyLocation());
+		 itemImage.get(i).setFitHeight(25);itemImage.get(i).setFitWidth(20);
+		 
+		 
+		 
+	   
+	
+		}
 }
  
 	 }

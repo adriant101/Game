@@ -16,18 +16,18 @@ public Enemy(int xcord, int ycord, String enemyname) {
 
 public int findxcords(int playerxcords) {
 	if (xcord < playerxcords) {
-		xcord = xcord+5;
+		xcord = xcord+1;
 	}else if (xcord>playerxcords) {
-		xcord = xcord-5;
+		xcord = xcord-1;
 	}
 	return xcord;
 	
 }
 public int findycords(int playerycords) {
 	if (ycord < playerycords) {
-		ycord = ycord+5;
+		ycord = ycord+1;
 	}else if (ycord>playerycords) {
-		ycord = ycord-5;
+		ycord = ycord-1;
 	}
 	return ycord;
 	
