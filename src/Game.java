@@ -239,7 +239,9 @@ public class myTimeHandler implements ActionListener {
 			}
 			}
 		
-
+if (items.size() == 0) {
+	System.out.println("time for stage 2");
+}
  
 	 }
 	
