@@ -33,7 +33,11 @@ private ImageView characterimage;
 
 private Enemy theenemy;
 private Movement move;
-private ImageView itemImage;
+private ImageView itemImage1;
+private ImageView itemImage2;
+private ImageView itemImage3;
+private ImageView itemImage4;
+private ImageView itemImage5;
 private ImageView enemyview;
 private Collision rectDraw = new Collision();
 private double enemyX, enemyY;
@@ -98,12 +102,42 @@ private Text player_score = new Text();
 }); //Items
 	for (int i = 0; i < items.size();i++ ) {
 		
-
-		itemImage = new ImageView (items.get(i).getitemimage());
+		if (i ==0) {
+			itemImage1 = new ImageView (items.get(i).getitemimage());
+			itemImage1.setFitHeight(25);itemImage1.setFitWidth(20);
+			itemImage1.setX(items.get(i).getxLocation());
+			itemImage1.setY(items.get(i).getyLocation());
+			Maingroup.getChildren().add(itemImage1);	
+		}else if (i==1) {
+			itemImage2 = new ImageView (items.get(i).getitemimage());
+			itemImage2.setFitHeight(25);itemImage2.setFitWidth(20);
+			itemImage2.setX(items.get(i).getxLocation());
+			itemImage2.setY(items.get(i).getyLocation());
+			Maingroup.getChildren().add(itemImage2);
+		}else if (i ==2) {
+			itemImage3 = new ImageView (items.get(i).getitemimage());
+			itemImage3.setFitHeight(25);itemImage3.setFitWidth(20);
+			itemImage3.setX(items.get(i).getxLocation());
+			itemImage3.setY(items.get(i).getyLocation());
+			Maingroup.getChildren().add(itemImage3);
+		}else if (i == 3) {
+			itemImage4 = new ImageView (items.get(i).getitemimage());
+			itemImage4.setFitHeight(25);itemImage4.setFitWidth(20);
+			itemImage4.setX(items.get(i).getxLocation());
+			itemImage4.setY(items.get(i).getyLocation());
+			Maingroup.getChildren().add(itemImage4);
+		}else if (i ==4) {
+			itemImage5 = new ImageView (items.get(i).getitemimage());
+			itemImage5.setFitHeight(25);itemImage5.setFitWidth(20);
+			itemImage5.setX(items.get(i).getxLocation());
+			itemImage5.setY(items.get(i).getyLocation());
+			Maingroup.getChildren().add(itemImage5);
+		}
+	/*	itemImage = new ImageView (items.get(i).getitemimage());
 		itemImage.setX(items.get(i).getxLocation());
 		itemImage.setY(items.get(i).getyLocation());
 		itemImage.setFitHeight(25);itemImage.setFitWidth(20);
-		Maingroup.getChildren().add(itemImage);
+		Maingroup.getChildren().add(itemImage);*/
 		
 		}
 		//Score
@@ -118,7 +152,7 @@ private Text player_score = new Text();
 		Maingroup.getChildren().add(gameOver);
 		Maingroup.getChildren().add(player_score);
 	
-	
+		Maingroup.getChildren().remove(itemImage1);
 
 	
 	return thescene;
@@ -223,6 +257,7 @@ public class myTimeHandler implements ActionListener {
 		 if (itemRectBounds.intersects(playa.getBoundsInLocal())) {
 			 GraphicsDriver.score += 5;
 			 items.remove(i);
+			
 			 myScore.setText("Score: "+GraphicsDriver.score);
 			 
 			 
