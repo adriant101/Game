@@ -108,7 +108,7 @@ private Text player_score = new Text();
 		 itemImage.get(i).setX(items.get(i).getxLocation());
 		 itemImage.get(i).setY(items.get(i).getyLocation());
 		 itemImage.get(i).setFitHeight(25);itemImage.get(i).setFitWidth(20);
-		Maingroup.getChildren().add(itemImage.get(i));
+		 Maingroup.getChildren().add(itemImage.get(i));
 	   
 	
 		}
@@ -229,6 +229,7 @@ public class myTimeHandler implements ActionListener {
 		 if (itemRectBounds.intersects(playa.getBoundsInLocal())) {
 			 GraphicsDriver.score += 5;
 			 itemImage.get(i).setImage(null);
+			 itemImage.remove(i);
 			 items.remove(i);
 			
 			
