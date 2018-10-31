@@ -29,8 +29,9 @@ private Scene thescene;
 private Group Maingroup = new Group();
 
 public  List<Items> items = new ArrayList<Items>();
+public List<ImageView> itemImage = new ArrayList<ImageView>();
 private ImageView characterimage;
-
+private static int removeItem;
 private Enemy theenemy;
 private Movement move;
 private ImageView itemImage1;
@@ -100,45 +101,16 @@ private Text player_score = new Text();
 			       characterimage.setY(getycords());
 		    }
 }); //Items
+	
 	for (int i = 0; i < items.size();i++ ) {
 		
-		if (i ==0) {
-			itemImage1 = new ImageView (items.get(i).getitemimage());
-			itemImage1.setFitHeight(25);itemImage1.setFitWidth(20);
-			itemImage1.setX(items.get(i).getxLocation());
-			itemImage1.setY(items.get(i).getyLocation());
-			Maingroup.getChildren().add(itemImage1);	
-		}else if (i==1) {
-			itemImage2 = new ImageView (items.get(i).getitemimage());
-			itemImage2.setFitHeight(25);itemImage2.setFitWidth(20);
-			itemImage2.setX(items.get(i).getxLocation());
-			itemImage2.setY(items.get(i).getyLocation());
-			Maingroup.getChildren().add(itemImage2);
-		}else if (i ==2) {
-			itemImage3 = new ImageView (items.get(i).getitemimage());
-			itemImage3.setFitHeight(25);itemImage3.setFitWidth(20);
-			itemImage3.setX(items.get(i).getxLocation());
-			itemImage3.setY(items.get(i).getyLocation());
-			Maingroup.getChildren().add(itemImage3);
-		}else if (i == 3) {
-			itemImage4 = new ImageView (items.get(i).getitemimage());
-			itemImage4.setFitHeight(25);itemImage4.setFitWidth(20);
-			itemImage4.setX(items.get(i).getxLocation());
-			itemImage4.setY(items.get(i).getyLocation());
-			Maingroup.getChildren().add(itemImage4);
-		}else if (i ==4) {
-			itemImage5 = new ImageView (items.get(i).getitemimage());
-			itemImage5.setFitHeight(25);itemImage5.setFitWidth(20);
-			itemImage5.setX(items.get(i).getxLocation());
-			itemImage5.setY(items.get(i).getyLocation());
-			Maingroup.getChildren().add(itemImage5);
-		}
-	/*	itemImage = new ImageView (items.get(i).getitemimage());
-		itemImage.setX(items.get(i).getxLocation());
-		itemImage.setY(items.get(i).getyLocation());
-		itemImage.setFitHeight(25);itemImage.setFitWidth(20);
-		Maingroup.getChildren().add(itemImage);*/
-		
+		 itemImage.add(new ImageView(items.get(i).getitemimage()));
+		 itemImage.get(i).setX(items.get(i).getxLocation());
+		 itemImage.get(i).setY(items.get(i).getyLocation());
+		 itemImage.get(i).setFitHeight(25);itemImage.get(i).setFitWidth(20);
+		Maingroup.getChildren().add(itemImage.get(i));
+	   
+	
 		}
 		//Score
 		myScore.setLayoutX(800);myScore.setLayoutY(700);
@@ -152,7 +124,7 @@ private Text player_score = new Text();
 		Maingroup.getChildren().add(gameOver);
 		Maingroup.getChildren().add(player_score);
 	
-		Maingroup.getChildren().remove(itemImage1);
+		
 
 	
 	return thescene;
@@ -256,12 +228,15 @@ public class myTimeHandler implements ActionListener {
 		Bounds itemRectBounds = itemRect.getBoundsInLocal();
 		 if (itemRectBounds.intersects(playa.getBoundsInLocal())) {
 			 GraphicsDriver.score += 5;
+			 itemImage.get(i).setImage(null);
 			 items.remove(i);
+			
 			
 			 myScore.setText("Score: "+GraphicsDriver.score);
 			 
 			 
-			}} 
+			}
+			}
 		
 
  
