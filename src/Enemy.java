@@ -16,9 +16,9 @@ public Enemy(int xcord, int ycord, String enemyname) {
 
 public int findxcords(int playerxcords) {
 	if (xcord < playerxcords) {
-		xcord = xcord+8;
+		xcord = xcord+3;
 	}else if (xcord>playerxcords) {
-		xcord = xcord-8;
+		xcord = xcord-3;
 	}
 	return xcord;
 	
