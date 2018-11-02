@@ -22,6 +22,9 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class Game {
+private int stagelevel = 1;
+private Text stagetext = new Text("Level 1");
+private boolean game1 = true;
 private String playerName;
 private int score = 0;
 private int highScore;
@@ -68,7 +71,9 @@ private Text player_score = new Text();
 		e.printStackTrace();
 	}
 	 move = new Movement(getspeed());
-	 
+	 Maingroup.getChildren().add(stagetext);
+	 stagetext.setX(900);
+	 stagetext.setY(25);
 	 thescene = new Scene(Maingroup, 1024, 765);
     characterimage = new ImageView (getplayerimage());
     characterimage.setX(getxcords());
@@ -221,19 +226,32 @@ public class myTimeHandler implements ActionListener {
 		for (int i=0 ; i < items.size();i++ ) {
 		itemRect = rectDraw.getBounds(items.get(i).getxLocation(), items.get(i).getyLocation(), 25, 20);
 		Bounds itemRectBounds = itemRect.getBoundsInLocal();
-		 if (itemRectBounds.intersects(playa.getBoundsInLocal())) {
+
+		 if (itemRectBounds.intersects(playa.getBoundsInLocal())&& game1==true) {
+	
 			 GraphicsDriver.score += 5;
 			 itemImage.get(i).setImage(null);
 			 itemImage.remove(i);
 			 items.remove(i);
 			 myScore.setText("Score: "+ GraphicsDriver.score);
-
+			 
+			
+			}else if (itemRectBounds.intersects(playa.getBoundsInLocal())&& game1==false) {
+				
+				 GraphicsDriver.score += 5;
+				 itemImage2.get(i).setImage(null);
+				 itemImage2.remove(i);
+				 items.remove(i);
+				 myScore.setText("Score: "+ GraphicsDriver.score);
 			}
 			}
 		
 if (items.size() == 0) {
 	PauseTransition pauseTransition = new PauseTransition(Duration.seconds(3));
     pauseTransition.play();
+    game1 = false;
+	 stagelevel +=1;
+	 stagetext.setText("Level "+ stagelevel);
 	
 	for (int i= 0; i < 6; i++) {
 		   items.add(new Items());
