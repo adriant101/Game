@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.Timer;
 
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -32,6 +33,7 @@ private Group Maingroup = new Group();
 public boolean stage2 = false;
 public  List<Items> items = new ArrayList<Items>();
 public List<ImageView> itemImage = new ArrayList<ImageView>();
+public List<ImageView> itemImage2 = new ArrayList<ImageView>();
 private ImageView characterimage;
 private static int removeItem;
 private Enemy theenemy;
@@ -236,15 +238,20 @@ if (items.size() == 0) {
 	for (int i= 0; i < 6; i++) {
 		   items.add(new Items());
 		   }
-	for (int i = 0; i < items.size();i++ ) {
-		 itemImage.add(new ImageView(items.get(i).getitemimage()));
-		 
-		 itemImage.get(i).setX(items.get(i).getxLocation());
-		 itemImage.get(i).setY(items.get(i).getyLocation());
-		 itemImage.get(i).setFitHeight(25);itemImage.get(i).setFitWidth(20);
-		 
 	
-		}
+		 
+		 Platform.runLater(() -> {
+			 for (int j = 0; j < items.size();j++ ) {
+			 itemImage2.add(new ImageView(items.get(j).getitemimage()));
+			 itemImage2.get(j).setX(items.get(j).getxLocation());
+			 itemImage2.get(j).setY(items.get(j).getyLocation());
+			 itemImage2.get(j).setFitHeight(25);itemImage2.get(j).setFitWidth(20);
+			 Maingroup.getChildren().add(itemImage2.get(j));}
+			});
+		 
+
+	
+		
 }
  
 	 }
