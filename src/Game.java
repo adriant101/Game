@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.swing.Timer;
 
+import javafx.animation.PauseTransition;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -17,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class Game {
 private String playerName;
@@ -27,18 +29,13 @@ private Items item;
 Items[] itemList;
 private Scene thescene;
 private Group Maingroup = new Group();
-
+public boolean stage2 = false;
 public  List<Items> items = new ArrayList<Items>();
 public List<ImageView> itemImage = new ArrayList<ImageView>();
 private ImageView characterimage;
 private static int removeItem;
 private Enemy theenemy;
 private Movement move;
-private ImageView itemImage1;
-private ImageView itemImage2;
-private ImageView itemImage3;
-private ImageView itemImage4;
-private ImageView itemImage5;
 private ImageView enemyview;
 private Collision rectDraw = new Collision();
 private double enemyX, enemyY;
@@ -109,7 +106,7 @@ private Text player_score = new Text();
 		 itemImage.get(i).setY(items.get(i).getyLocation());
 		 itemImage.get(i).setFitHeight(25);itemImage.get(i).setFitWidth(20);
 		 Maingroup.getChildren().add(itemImage.get(i));
-	   
+		 
 	
 		}
 		//Score
@@ -123,10 +120,6 @@ private Text player_score = new Text();
 		gameOver.setFill(Color.BLACK);gameOver.setStyle("-fx-font: 48 arial;");
 		Maingroup.getChildren().add(gameOver);
 		Maingroup.getChildren().add(player_score);
-	
-		
-
-	
 	return thescene;
 	}
  
@@ -224,38 +217,32 @@ public class myTimeHandler implements ActionListener {
 			
 	} 
 		for (int i=0 ; i < items.size();i++ ) {
-		 itemRect = rectDraw.getBounds(items.get(i).getxLocation(), items.get(i).getyLocation(), 25, 20);
+		itemRect = rectDraw.getBounds(items.get(i).getxLocation(), items.get(i).getyLocation(), 25, 20);
 		Bounds itemRectBounds = itemRect.getBoundsInLocal();
 		 if (itemRectBounds.intersects(playa.getBoundsInLocal())) {
 			 GraphicsDriver.score += 5;
 			 itemImage.get(i).setImage(null);
 			 itemImage.remove(i);
 			 items.remove(i);
-			 ;
-			
-			
-			 myScore.setText("Score: "+GraphicsDriver.score);
-			 
-			 
+			 myScore.setText("Score: "+ GraphicsDriver.score);
+
 			}
 			}
 		
 if (items.size() == 0) {
-	itemRectBounds= null;
+	PauseTransition pauseTransition = new PauseTransition(Duration.seconds(3));
+    pauseTransition.play();
 	
 	for (int i= 0; i < 6; i++) {
 		   items.add(new Items());
 		   }
 	for (int i = 0; i < items.size();i++ ) {
-		
 		 itemImage.add(new ImageView(items.get(i).getitemimage()));
+		 
 		 itemImage.get(i).setX(items.get(i).getxLocation());
 		 itemImage.get(i).setY(items.get(i).getyLocation());
 		 itemImage.get(i).setFitHeight(25);itemImage.get(i).setFitWidth(20);
 		 
-		 
-		 
-	   
 	
 		}
 }
@@ -263,6 +250,7 @@ if (items.size() == 0) {
 	 }
 	
 }
+
 }
 
 	
