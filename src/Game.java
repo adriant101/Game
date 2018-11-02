@@ -47,7 +47,8 @@ private double enemyX, enemyY;
 private Rectangle enemy, playa = new Rectangle();
 private boolean collisionDetected = false;
 private Rectangle itemRect = new Rectangle();
-private Timer newtimer = new Timer(100, new myTimeHandler());
+private int timer = 100;
+private Timer newtimer = new Timer(timer, new myTimeHandler());
 private Bounds itemRectBounds = null;
 private Text myScore = new Text();
 private Text gameOver = new Text();
@@ -243,6 +244,8 @@ public class myTimeHandler implements ActionListener {
 				 itemImage2.remove(i);
 				 items.remove(i);
 				 myScore.setText("Score: "+ GraphicsDriver.score);
+				 timer -= 5;
+				 
 			}
 			}
 		
